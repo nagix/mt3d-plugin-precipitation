@@ -36,6 +36,7 @@ class PrecipitationPlugin extends Plugin {
             rainColor: '#00f',
             meshOpacity: 0
         });
+        me._onRefresh = me._onRefresh.bind(me);
     }
 
     onAdd(map) {
@@ -46,10 +47,23 @@ class PrecipitationPlugin extends Plugin {
         map.map.removeLayer(this._layer);
     }
 
+    onEnabled() {
+        this._layer.on('refresh', this._onRefresh);
+        this._onRefresh();
+    }
+
+    onDisabled() {
+        this._layer.off('refresh', this._onRefresh);
+    }
+
     onVisibilityChanged(visible) {
         const me = this;
 
         me._map.map.setLayoutProperty(me.id, 'visibility', visible ? 'visible' : 'none');
+    }
+
+    _onRefresh() {
+        this._layer.setRainColor(this._map.isDarkBackground() ? '#fff' : '#00f');
     }
 
 }

@@ -4,6 +4,8 @@ Precipitation plugin displays live rain animations on the the [Mini Tokyo 3D](ht
 
 ![Screenshot](https://nagix.github.io/mt3d-plugin-precipitation/screenshot1.jpg)
 
+Precipitation plugin is used in [Mini Tokyo 3D Live Demo](https://minitokyo3d.com).
+
 ## How to Use
 
 First, load the Mini Tokyo 3D and this plugin within the `<head>` element of the HTML file.
