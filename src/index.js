@@ -34,7 +34,8 @@ class PrecipitationPlugin extends Plugin {
         me._layer = new RainLayer({
             id: me.id,
             rainColor: '#00f',
-            meshOpacity: 0
+            meshOpacity: 0,
+            repaint: false
         });
         me._onRefresh = me._onRefresh.bind(me);
     }
