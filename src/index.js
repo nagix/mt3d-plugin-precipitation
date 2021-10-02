@@ -1,6 +1,6 @@
-import RainLayer from '../node_modules/mapbox-gl-rain-layer/src/index.js';
+import RainLayer from 'mapbox-gl-rain-layer/src/index.js';
 import {Plugin} from 'mini-tokyo-3d';
-import precipitationSVG from '../node_modules/@fortawesome/fontawesome-free/svgs/solid/cloud-showers-heavy.svg';
+import precipitationSVG from '@fortawesome/fontawesome-free/svgs/solid/cloud-showers-heavy.svg';
 
 function addColor(url, color) {
     const encodedColor = color.replace('#', '%23');
