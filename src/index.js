@@ -1,5 +1,4 @@
 import RainLayer from 'mapbox-gl-rain-layer/src/index.js';
-import {Plugin} from 'mini-tokyo-3d';
 import precipitationSVG from '@fortawesome/fontawesome-free/svgs/solid/cloud-showers-heavy.svg';
 
 function addColor(url, color) {
@@ -7,14 +6,9 @@ function addColor(url, color) {
     return url.replace('%3e', ` fill=\'${encodedColor}\' stroke=\'${encodedColor}\'%3e`);
 }
 
-class PrecipitationPlugin extends Plugin {
+class PrecipitationPlugin {
 
-    constructor(options) {
-        super(Object.assign({
-            clockModes: ['realtime'],
-            viewModes: ['ground']
-        }, options));
-
+    constructor() {
         const me = this;
 
         me.id = 'precipitation';
@@ -31,7 +25,9 @@ class PrecipitationPlugin extends Plugin {
             backgroundSize: '32px',
             backgroundImage: `url("${addColor(precipitationSVG, 'white')}")`
         };
-        me._layer = new RainLayer({
+        me.clockModes = ['realtime'];
+        me.viewModes = ['ground'];
+        me.layer = new RainLayer({
             id: me.id,
             rainColor: '#00f',
             meshOpacity: 0,
@@ -41,34 +37,43 @@ class PrecipitationPlugin extends Plugin {
     }
 
     onAdd(map) {
-        map.map.addLayer(this._layer, 'poi');
+        const me = this;
+
+        me.map = map;
+        map.addLayer(me.layer);
     }
 
     onRemove(map) {
-        map.map.removeLayer(this._layer);
+        map.removeLayer(this.id);
     }
 
     onEnabled() {
-        this._layer.on('refresh', this._onRefresh);
-        this._onRefresh();
+        const me = this;
+
+        me.layer.on('refresh', me._onRefresh);
+        me._onRefresh();
     }
 
     onDisabled() {
-        this._layer.off('refresh', this._onRefresh);
+        const me = this;
+
+        me.layer.off('refresh', me._onRefresh);
     }
 
     onVisibilityChanged(visible) {
         const me = this;
 
-        me._map.map.setLayoutProperty(me.id, 'visibility', visible ? 'visible' : 'none');
+        me.map.setLayerVisibility(me.id, visible ? 'visible' : 'none');
     }
 
     _onRefresh() {
-        this._layer.setRainColor(this._map.isDarkBackground() ? '#fff' : '#00f');
+        const me = this;
+
+        me.layer.setRainColor(me.map.isDarkBackground() ? '#fff' : '#00f');
     }
 
 }
 
-export default function(options) {
-    return new PrecipitationPlugin(options);
+export default function() {
+    return new PrecipitationPlugin();
 }
