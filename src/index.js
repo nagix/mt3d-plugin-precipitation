@@ -69,7 +69,7 @@ class PrecipitationPlugin {
     _onRefresh() {
         const me = this;
 
-        me.layer.setRainColor(me.map.isDarkBackground() ? '#fff' : '#00f');
+        me.layer.setRainColor(me.map.hasDarkBackground() ? '#fff' : '#00f');
     }
 
 }
