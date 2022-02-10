@@ -69,7 +69,8 @@ class PrecipitationPlugin {
     _onRefresh() {
         const me = this;
 
-        me.layer.setRainColor(me.map.hasDarkBackground() ? '#fff' : '#00f');
+        me.layer.setRainColor(me.map.hasDarkBackground() ? '#ccf' : '#00f');
+        me.layer.setSnowColor(me.map.hasDarkBackground() ? '#fff' : '#ccf');
     }
 
 }

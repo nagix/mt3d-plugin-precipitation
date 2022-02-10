@@ -6,7 +6,7 @@
   "module": "dist/mt3d-plugin-precipitation.esm.js",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
-    "mapbox-gl-rain-layer": "^0.4.0"
+    "mapbox-gl-rain-layer": "^0.5.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.1",
