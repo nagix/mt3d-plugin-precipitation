@@ -17,6 +17,7 @@ class PrecipitationPlugin {
             ja: '降水',
             ko: '강수',
             ne: 'वर्षा',
+            pt: 'Precipitação',
             th: 'ฝน',
             'zh-Hans': '降水',
             'zh-Hant': '降水'
