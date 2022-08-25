@@ -11,7 +11,7 @@ const pkg = JSON.parse(fs.readFileSync('package.json'));
 const banner = `/*!
  * mt3d-plugin-precipitation v${pkg.version}
  * ${pkg.homepage}
- * (c) ${new Date().getFullYear()} ${pkg.author}
+ * (c) 2021-${new Date().getFullYear()} ${pkg.author}
  * Released under the ${pkg.license} license
  */`;
 
@@ -31,6 +31,7 @@ export default [{
 	external: ['mini-tokyo-3d'],
 	plugins: [
 		replace({
+			preventAssignment: true,
 			include: ['node_modules/mapbox-gl-rain-layer/**/*.js'],
 			'mapbox-gl': '../../../src/mapboxgl.js',
 			'three': '../../../src/three.js'
@@ -56,6 +57,7 @@ export default [{
 	external: ['mini-tokyo-3d'],
 	plugins: [
 		replace({
+			preventAssignment: true,
 			include: ['node_modules/mapbox-gl-rain-layer/**/*.js'],
 			'mapbox-gl': '../../../src/mapboxgl.js',
 			'three': '../../../src/three.js'
@@ -84,6 +86,7 @@ export default [{
 	external: ['mini-tokyo-3d'],
 	plugins: [
 		replace({
+			preventAssignment: true,
 			include: ['node_modules/mapbox-gl-rain-layer/**/*.js'],
 			'mapbox-gl': '../../../src/mapboxgl.js',
 			'three': '../../../src/three.js'
