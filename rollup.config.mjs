@@ -4,7 +4,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import replace from '@rollup/plugin-replace';
 import image from '@rollup/plugin-image';
 import json from '@rollup/plugin-json';
-import {terser} from 'rollup-plugin-terser';
+import terser from '@rollup/plugin-terser';
 import strip from '@rollup/plugin-strip';
 
 const pkg = JSON.parse(fs.readFileSync('package.json'));
@@ -36,7 +36,10 @@ export default [{
 			'mapbox-gl': '../../../src/mapboxgl.js',
 			'three': '../../../src/three.js'
 		}),
-		resolve(),
+		resolve({
+			browser: true,
+			preferBuiltins: false
+		}),
 		commonjs(),
 		image(),
 		json()
@@ -62,7 +65,10 @@ export default [{
 			'mapbox-gl': '../../../src/mapboxgl.js',
 			'three': '../../../src/three.js'
 		}),
-		resolve(),
+		resolve({
+			browser: true,
+			preferBuiltins: false
+		}),
 		commonjs(),
 		image(),
 		json(),
@@ -91,7 +97,10 @@ export default [{
 			'mapbox-gl': '../../../src/mapboxgl.js',
 			'three': '../../../src/three.js'
 		}),
-		resolve(),
+		resolve({
+			browser: true,
+			preferBuiltins: false
+		}),
 		commonjs(),
 		image(),
 		json()
