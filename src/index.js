@@ -14,6 +14,7 @@ class PrecipitationPlugin {
         me.id = 'precipitation';
         me.name = {
             en: 'Precipitation',
+            es: 'Precipitación',
             fr: 'Précipitation',
             ja: '降水',
             ko: '강수',
