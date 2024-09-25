@@ -54,6 +54,7 @@ class PrecipitationPlugin {
         const me = this;
 
         me.layer.on('refresh', me._onRefresh);
+        document.addEventListener('visibilitychange', me._onRefresh);
         me._onRefresh();
     }
 
@@ -61,6 +62,7 @@ class PrecipitationPlugin {
         const me = this;
 
         me.layer.off('refresh', me._onRefresh);
+        document.removeEventListener('visibilitychange', me._onRefresh);
     }
 
     onVisibilityChanged(visible) {
@@ -70,10 +72,10 @@ class PrecipitationPlugin {
     }
 
     _onRefresh() {
-        const me = this;
+        const {layer, map} = this;
 
-        me.layer.setRainColor(me.map.hasDarkBackground() ? '#ccf' : '#00f');
-        me.layer.setSnowColor(me.map.hasDarkBackground() ? '#fff' : '#ccf');
+        layer.setRainColor(map.hasDarkBackground() ? '#ccf' : '#00f');
+        layer.setSnowColor(map.hasDarkBackground() ? '#fff' : '#ccf');
     }
 
 }
