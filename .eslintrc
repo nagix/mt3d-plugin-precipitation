@@ -69,6 +69,7 @@
     "jsdoc/require-returns-type": "error"
   },
   "settings": {
+    "import/ignore": ["mini-tokyo-3d"],
     "jsdoc":{
       "ignorePrivate": true,
       "preferredTypes": {
