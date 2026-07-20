@@ -33,7 +33,7 @@ class PrecipitationPlugin {
         me.viewModes = ['ground'];
         me.layer = new RainLayer({
             id: me.id,
-            rainColor: '#00f',
+            rainColor: 'rgba(153, 153, 255, 0.5)',
             meshOpacity: 0,
             repaint: false
         });
@@ -52,18 +52,17 @@ class PrecipitationPlugin {
     }
 
     onEnabled() {
-        const me = this;
+        const me = this,
+            map = me.map;
 
-        me.layer.on('refresh', me._onRefresh);
-        document.addEventListener('visibilitychange', me._onRefresh);
-        me._onRefresh();
+        map.on('light', me._onRefresh);
+        me._onRefresh({brightness: map.getBrightness()});
     }
 
     onDisabled() {
         const me = this;
 
-        me.layer.off('refresh', me._onRefresh);
-        document.removeEventListener('visibilitychange', me._onRefresh);
+        me.map.off('light', me._onRefresh);
     }
 
     onVisibilityChanged(visible) {
@@ -72,11 +71,15 @@ class PrecipitationPlugin {
         me.map.setLayerVisibility(me.id, visible ? 'visible' : 'none');
     }
 
-    _onRefresh() {
-        const {layer, map} = this;
+    _onRefresh(data) {
+        const layer = this.layer,
+            brightness = data.brightness,
+            dark = brightness < 0.25,
+            rg = dark ? 153 + Math.min(brightness * 408, 102) : 51 + Math.min(brightness * 204, 204),
+            blue = dark ? 204 + Math.min(brightness * 408, 51) : 153 + Math.min(brightness * 204, 102);
 
-        layer.setRainColor(map.hasDarkBackground() ? '#ccf' : '#00f');
-        layer.setSnowColor(map.hasDarkBackground() ? '#fff' : '#ccf');
+        layer.setRainColor(`rgba(${rg}, ${rg}, ${blue}, 0.5)`);
+        layer.setSnowColor(`hsl(0, 0%, ${60 + Math.min(brightness * 160, 40)}%)`);
     }
 
 }
