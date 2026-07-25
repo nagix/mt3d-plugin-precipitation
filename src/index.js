@@ -56,7 +56,7 @@ class PrecipitationPlugin {
             map = me.map;
 
         map.on('light', me._onRefresh);
-        me._onRefresh({brightness: map.getBrightness()});
+        me._onRefresh(map.getLight());
     }
 
     onDisabled() {
