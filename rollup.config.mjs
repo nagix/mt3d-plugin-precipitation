@@ -16,93 +16,93 @@ const banner = `/*!
  */`;
 
 export default [{
-	input: 'src/index.js',
-	output: {
-		name: 'mt3dPrecipitation',
-		file: `dist/${pkg.name}.js`,
-		format: 'umd',
-		indent: false,
-		sourcemap: true,
-		banner,
-		globals: {
-			'mini-tokyo-3d': 'mt3d'
-		}
-	},
-	external: ['mini-tokyo-3d'],
-	plugins: [
-		replace({
-			preventAssignment: true,
-			include: ['node_modules/mapbox-gl-rain-layer/**/*.js'],
-			'mapbox-gl': '../../../src/mapboxgl.js',
-			'three': '../../../src/three.js'
-		}),
-		resolve({
-			browser: true,
-			preferBuiltins: false
-		}),
-		commonjs(),
-		image(),
-		json()
-	]
+    input: 'src/index.js',
+    output: {
+        name: 'mt3dPrecipitation',
+        file: `dist/${pkg.name}.js`,
+        format: 'umd',
+        indent: false,
+        sourcemap: true,
+        banner,
+        globals: {
+            'mini-tokyo-3d': 'mt3d'
+        }
+    },
+    external: ['mini-tokyo-3d'],
+    plugins: [
+        replace({
+            preventAssignment: true,
+            include: ['node_modules/mapbox-gl-rain-layer/**/*.js'],
+            'mapbox-gl': '../../../src/mapboxgl.js',
+            'three': '../../../src/three.js'
+        }),
+        resolve({
+            browser: true,
+            preferBuiltins: false
+        }),
+        commonjs(),
+        image(),
+        json()
+    ]
 }, {
-	input: 'src/index.js',
-	output: {
-		name: 'mt3dPrecipitation',
-		file: `dist/${pkg.name}.min.js`,
-		format: 'umd',
-		indent: false,
-		sourcemap: true,
-		banner,
-		globals: {
-			'mini-tokyo-3d': 'mt3d'
-		}
-	},
-	external: ['mini-tokyo-3d'],
-	plugins: [
-		replace({
-			preventAssignment: true,
-			include: ['node_modules/mapbox-gl-rain-layer/**/*.js'],
-			'mapbox-gl': '../../../src/mapboxgl.js',
-			'three': '../../../src/three.js'
-		}),
-		resolve({
-			browser: true,
-			preferBuiltins: false
-		}),
-		commonjs(),
-		image(),
-		json(),
-		terser({
-			compress: {
-				pure_getters: true
-			}
-		}),
-		strip({
-			sourceMap: true
-		})
-	]
+    input: 'src/index.js',
+    output: {
+        name: 'mt3dPrecipitation',
+        file: `dist/${pkg.name}.min.js`,
+        format: 'umd',
+        indent: false,
+        sourcemap: true,
+        banner,
+        globals: {
+            'mini-tokyo-3d': 'mt3d'
+        }
+    },
+    external: ['mini-tokyo-3d'],
+    plugins: [
+        replace({
+            preventAssignment: true,
+            include: ['node_modules/mapbox-gl-rain-layer/**/*.js'],
+            'mapbox-gl': '../../../src/mapboxgl.js',
+            'three': '../../../src/three.js'
+        }),
+        resolve({
+            browser: true,
+            preferBuiltins: false
+        }),
+        commonjs(),
+        image(),
+        json(),
+        terser({
+            compress: {
+                pure_getters: true // eslint-disable-line camelcase
+            }
+        }),
+        strip({
+            sourceMap: true
+        })
+    ]
 }, {
-	input: 'src/index.js',
-	output: {
-		file: pkg.module,
-		format: 'esm',
-		indent: false,
-		banner
-	},
-	external: ['mini-tokyo-3d'],
-	plugins: [
-		replace({
-			preventAssignment: true,
-			include: ['node_modules/mapbox-gl-rain-layer/**/*.js'],
-			'mapbox-gl': '../../../src/mapboxgl.js',
-			'three': '../../../src/three.js'
-		}),
-		resolve({
-			browser: true,
-			preferBuiltins: false
-		}),
-		commonjs(),
-		image(),
-		json()
-	]
+    input: 'src/index.js',
+    output: {
+        file: pkg.module,
+        format: 'esm',
+        indent: false,
+        banner
+    },
+    external: ['mini-tokyo-3d'],
+    plugins: [
+        replace({
+            preventAssignment: true,
+            include: ['node_modules/mapbox-gl-rain-layer/**/*.js'],
+            'mapbox-gl': '../../../src/mapboxgl.js',
+            'three': '../../../src/three.js'
+        }),
+        resolve({
+            browser: true,
+            preferBuiltins: false
+        }),
+        commonjs(),
+        image(),
+        json()
+    ]
 }];
