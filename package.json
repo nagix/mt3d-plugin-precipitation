@@ -2,7 +2,7 @@
   "name": "mt3d-plugin-precipitation",
   "version": "1.4.0",
   "description": "Precipitation plugin for Mini Tokyo 3D",
-  "main": "dist/mt3d-plugin-precipitation.js",
+  "main": "dist/mt3d-plugin-precipitation.cjs",
   "module": "dist/mt3d-plugin-precipitation.esm.js",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",

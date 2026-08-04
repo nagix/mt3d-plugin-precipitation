@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'node:fs';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import replace from '@rollup/plugin-replace';
@@ -18,15 +18,11 @@ const banner = `/*!
 export default [{
     input: 'src/index.js',
     output: {
-        name: 'mt3dPrecipitation',
-        file: `dist/${pkg.name}.js`,
-        format: 'umd',
+        file: `dist/${pkg.name}.cjs`,
+        format: 'cjs',
         indent: false,
         sourcemap: true,
-        banner,
-        globals: {
-            'mini-tokyo-3d': 'mt3d'
-        }
+        banner
     },
     external: ['mini-tokyo-3d'],
     plugins: [
@@ -87,6 +83,7 @@ export default [{
         file: pkg.module,
         format: 'esm',
         indent: false,
+        sourcemap: true,
         banner
     },
     external: ['mini-tokyo-3d'],
