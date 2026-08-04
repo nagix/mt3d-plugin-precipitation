@@ -5,7 +5,6 @@
   "main": "dist/mt3d-plugin-precipitation.cjs",
   "module": "dist/mt3d-plugin-precipitation.esm.js",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.7.2",
     "mapbox-gl-rain-layer": "^0.9.1"
   },
   "devDependencies": {
@@ -22,7 +21,8 @@
     "eslint-plugin-import-x": "^4.17.1",
     "eslint-plugin-jsdoc": "^63.3.3",
     "mini-tokyo-3d": "^3.6.0",
-    "rollup": "^4.29.2"
+    "rollup": "^4.29.2",
+    "@fortawesome/fontawesome-free": "^7.3.1"
   },
   "peerDependencies": {
     "mini-tokyo-3d": "^3.6.0"

@@ -3,7 +3,7 @@ import precipitationSVG from '@fortawesome/fontawesome-free/svgs/solid/cloud-sho
 
 function addColor(url, color) {
     const encodedColor = color.replace('#', '%23');
-    return url.replace('%3e', ` fill=\'${encodedColor}\' stroke=\'${encodedColor}\'%3e`);
+    return url.replace(/fill='.*?'/, `fill='${encodedColor}' stroke='${encodedColor}'`);
 }
 
 class PrecipitationPlugin {
