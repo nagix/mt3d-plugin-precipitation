@@ -1,6 +1,6 @@
 # Precipitation plugin for Mini Tokyo 3D
 
-Precipitation plugin displays live rain animations on the the [Mini Tokyo 3D](https://minitokyo3d.com) map.
+Precipitation plugin displays live rain animations on the [Mini Tokyo 3D](https://minitokyo3d.com) map.
 
 ![Screenshot](https://nagix.github.io/mt3d-plugin-precipitation/screenshot1.jpg)
 
@@ -16,12 +16,12 @@ First, load the Mini Tokyo 3D and this plugin within the `<head>` element of the
 <script src="https://cdn.jsdelivr.net/npm/mt3d-plugin-precipitation@latest/dist/mt3d-plugin-precipitation.min.js"></script>
 ```
 
-Then, create a MiniTokyo3D instance specifying the `plugins` property, which is the array containing the plugin instance returned by `mt3dPrecipitation()`.
+Then, create a Map instance specifying the `plugins` property, which is the array containing the plugin instance returned by `mt3dPrecipitation()`.
 
 ```html
 <div id="map" style="width: 400px; height: 400px;"></div>
 <script>
-    const map = new mt3d.MiniTokyo3D({
+    const map = new mt3d.Map({
         container: 'map',
         plugins: [mt3dPrecipitation()]
     });
