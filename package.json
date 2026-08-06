@@ -23,7 +23,8 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c rollup.config.dev.mjs -w",
-    "lint": "eslint --cache . && sort-package-json --check"
+    "lint": "eslint --cache . && sort-package-json --check",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "mapbox-gl-rain-layer": "^0.9.1"
